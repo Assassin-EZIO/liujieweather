@@ -5,9 +5,9 @@
     <version value="1"/>
 
     <list>
-        <mapping class="com.liujieweather.android.db.Province"/>
-        <mapping class="com.liujieweather.android.db.City"/>
-        <mapping class="com.liujieweather.android.db.County"/>
+        <mapping class="com.example.liujieweather.db.Province"/>
+        <mapping class="com.example.liujieweather.db.City"/>
+        <mapping class="com.example.liujieweather.db.County"/>
     </list>
 
 </litepal>
