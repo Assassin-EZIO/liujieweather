@@ -1,10 +1,12 @@
-package com.example.liujieweather.util;
+package com.liujieweather.util;
 
 import android.text.TextUtils;
 
-import com.example.liujieweather.db.City;
-import com.example.liujieweather.db.County;
-import com.example.liujieweather.db.Province;
+import com.google.gson.Gson;
+import com.liujieweather.db.City;
+import com.liujieweather.db.County;
+import com.liujieweather.db.Province;
+import com.liujieweather.gson.Weather;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -73,5 +75,17 @@ public class Utility {
             }
         }
         return false;
+    }
+
+    public static Weather handlerWeatherResponse(String response){
+        try {
+            JSONObject jsonObject=new JSONObject(response);
+            JSONArray jsonArray=jsonObject.getJSONArray("HeWeather");
+            String weatherContent=jsonArray.getJSONObject(0).toString();
+            return new Gson().fromJson(weatherContent,Weather.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return null;
     }
 }

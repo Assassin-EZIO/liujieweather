@@ -1,4 +1,4 @@
-package com.example.liujieweather.util;
+package com.liujieweather.util;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;

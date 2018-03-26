@@ -5,9 +5,9 @@
     <version value="1"/>
 
     <list>
-        <mapping class="com.example.liujieweather.db.Province"/>
-        <mapping class="com.example.liujieweather.db.City"/>
-        <mapping class="com.example.liujieweather.db.County"/>
+        <mapping class="com.liujieweather.db.Province"/>
+        <mapping class="com.liujieweather.db.City"/>
+        <mapping class="com.liujieweather.db.County"/>
     </list>
 
 </litepal>
