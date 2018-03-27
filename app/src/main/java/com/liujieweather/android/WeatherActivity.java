@@ -10,6 +10,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -34,6 +35,8 @@ import okhttp3.Callback;
 import okhttp3.Response;
 
 public class WeatherActivity extends AppCompatActivity {
+
+    private String aqiString;
 
     public DrawerLayout drawerLayout;
 
@@ -182,17 +185,31 @@ public class WeatherActivity extends AppCompatActivity {
             TextView minText=(TextView)view.findViewById(R.id.min_text);
             dateText.setText(forecast.date);
             infoText.setText(forecast.more.info);
-            maxText.setText(forecast.temperature.max);
-            minText.setText(forecast.temperature.min);
+            maxText.setText(forecast.temperature.max+"℃");
+            minText.setText(forecast.temperature.min+"℃");
             forecastLayout.addView(view);
         }
         if (weather.aqi!=null){
-            aqiText.setText(weather.aqi.city.aqi);
+            int aqiInt=Integer.parseInt(weather.aqi.city.aqi);
+            if (aqiInt>=0&&aqiInt<=50){
+                aqiString="优";
+            }else if (aqiInt>50&&aqiInt<=100){
+                aqiString="良";
+            }else if (aqiInt>100&&aqiInt<=150){
+                aqiString="轻微污染";
+            }else if (aqiInt>150&&aqiInt<=200){
+                aqiString="轻度污染";
+            }else if (aqiInt>200&&aqiInt<=300){
+                aqiString="中度污染";
+            }else if (aqiInt>300){
+                aqiString="重度污染";
+            }
+            aqiText.setText(weather.aqi.city.aqi+"("+aqiString+")");
             pm25Text.setText(weather.aqi.city.pm25);
         }
-        String comfort="舒适度"+weather.suggestion.comfort.info;
-        String carWash="洗车指数"+weather.suggestion.carWash.info;
-        String sport="运动建议"+weather.suggestion.sport.info;
+        String comfort="舒适度："+weather.suggestion.comfort.info;
+        String carWash="洗车指数："+weather.suggestion.carWash.info;
+        String sport="运动建议："+weather.suggestion.sport.info;
         comfortText.setText(comfort);
         carWashText.setText(carWash);
         sportText.setText(sport);
