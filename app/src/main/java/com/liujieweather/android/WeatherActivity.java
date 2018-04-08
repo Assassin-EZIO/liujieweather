@@ -10,7 +10,6 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -204,7 +203,7 @@ public class WeatherActivity extends AppCompatActivity {
             }else if (aqiInt>300){
                 aqiString="重度污染";
             }
-            aqiText.setText(weather.aqi.city.aqi+"("+aqiString+")");
+            aqiText.setText(aqiString);
             pm25Text.setText(weather.aqi.city.pm25);
         }
         String comfort="舒适度："+weather.suggestion.comfort.info;
